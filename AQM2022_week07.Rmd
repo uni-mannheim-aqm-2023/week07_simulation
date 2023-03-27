@@ -2,19 +2,19 @@
 title: "AQM Week 07 -- Simulation, Simulation!"
 author: 
   - Oliver Rittmann
-  - Viktoriia Semenova
-date: "March 31, 2022"
+  - Domantas Undzėnas
+date: "March 30, 2023"
 output:
-  html_document:
-    toc: true
-    toc_float: true
-    css: css/lab.css
+  pdf_document:
+    toc: yes
   html_notebook:
     toc: true
     toc_float: true
     css: css/lab.css
-  pdf_document:
-    toc: yes
+  html_document:
+    toc: true
+    toc_float: true
+    css: css/lab.css
 header-includes:
    - \usepackage[default]{sourcesanspro}
    - \usepackage[T1]{fontenc}
@@ -203,7 +203,7 @@ We start with **Predicted Values**. To get predicted values, four steps are nece
 
 nsim <- 1000
 
-set.seed(20220331)
+set.seed(20230330)
 
 # Set up the sampling distribution
 S <- mvrnorm(nsim, res$par, varcov)
@@ -325,7 +325,7 @@ hist(
 ## Step 4: Simulate Fundamental Uncertainty
 
 ```{r Simulate Fundamental Uncertainty}
-set.seed(20220331)
+set.seed(20230330)
 
 # Take draws from the appropriate stochastic component
 Y_pred_in <- rbinom(n = nsim, 
@@ -367,7 +367,7 @@ stochastic_component <- function(ndraws, p) {
 }
 
 sim_function <-
-  function(seed = 20220331,
+  function(seed = 20230330,
            nsim = 1000,
            coefs,
            vcov,
@@ -598,7 +598,7 @@ df <- cbind(y, X)
 startvals <- rep(0, 12)
 
 
-set.seed(20220331)
+set.seed(20230330)
 
 bs_res <-
   t(replicate(
