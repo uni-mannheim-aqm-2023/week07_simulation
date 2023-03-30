@@ -5,16 +5,16 @@ author:
   - Domantas Undzėnas
 date: "March 30, 2023"
 output:
-  pdf_document:
-    toc: yes
-  html_notebook:
-    toc: true
-    toc_float: true
-    css: css/lab.css
   html_document:
     toc: true
     toc_float: true
     css: css/lab.css
+  html_notebook:
+    toc: true
+    toc_float: true
+    css: css/lab.css
+  pdf_document:
+    toc: yes
 header-includes:
    - \usepackage[default]{sourcesanspro}
    - \usepackage[T1]{fontenc}
@@ -222,10 +222,20 @@ abline(v = res$par[2],
        lwd = 2)
 ```
 
-Or we can look at the first two columns in the simulated distribution jointly: 
+We can also take a look at the joint distribution of two parameters. E.g. the joint simulated distribution of the intercepte and $\beta_1$.
 
-![Simulated Sampling Distribution of Intercept and Treatment Coefficients](images/sampling_distribution.png)
+```{r}
+plot(x = S[,1], 
+     y = S[,2],
+     pch = 19,
+     col = viridis(1, 0.5),
+     las = 1,
+     xlab = expression(paste("Simulated Values for ", beta[0])),
+     ylab = expression(paste("Simulated Values for ", beta[1])),
+     main = expression(paste("Joint simulated distribution of ", beta[0], " and ", beta[1])))
+```
 
+We can see that those are (negatively) related. Let's check the variances and the covariance and compare it to our variance-covariance matrix.
 
 ```{r}
 # values from the estimated variance-covariance data from above 
